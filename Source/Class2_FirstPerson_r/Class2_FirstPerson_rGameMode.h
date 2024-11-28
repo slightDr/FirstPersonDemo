@@ -12,7 +12,19 @@ class AClass2_FirstPerson_rGameMode : public AGameModeBase
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float fLimitTime;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int iDoubleNum;
+
+	FTimerHandle TimerHandle_GameTimeLimit; // 定义定时器句柄
+	
 	AClass2_FirstPerson_rGameMode();
+
+	void DoubleSomeCubes();
+
+	void TimeLimit() const;
 };
 
 
