@@ -9,6 +9,10 @@ void AClass2_FirstPerson_rPlayerController::AddPoints(int32 add)
 {
 	iPoints += add;
 	UE_LOG(LogTemp, Warning, TEXT("points: %d"), iPoints);
+	if (MyUserWidgetInstance)
+	{
+		MyUserWidgetInstance->ShowPoints(iPoints);
+	}
 }
 
 void AClass2_FirstPerson_rPlayerController::BeginPlay()
@@ -22,5 +26,13 @@ void AClass2_FirstPerson_rPlayerController::BeginPlay()
 	{
 		// add the mapping context so we get controls
 		Subsystem->AddMappingContext(InputMappingContext, 0);
+	}
+
+	if (MyUserWidgetInstance)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("true"));
+	} else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("false"));
 	}
 }

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MyUserWidget.h"
 #include "GameFramework/PlayerController.h"
 #include "Class2_FirstPerson_rPlayerController.generated.h"
 
@@ -11,7 +12,7 @@ class UInputMappingContext;
 /**
  *
  */
-UCLASS()
+UCLASS(Blueprintable)
 class CLASS2_FIRSTPERSON_R_API AClass2_FirstPerson_rPlayerController : public APlayerController
 {
 	GENERATED_BODY()
@@ -36,4 +37,9 @@ protected:
 	virtual void BeginPlay() override;
 
 	// End Actor interface
+	
+public:
+	// 用于存储 UMyUserWidget 的实例
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UMyUserWidget* MyUserWidgetInstance;
 };
