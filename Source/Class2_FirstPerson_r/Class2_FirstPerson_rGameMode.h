@@ -22,6 +22,9 @@ public:
 	
 	AClass2_FirstPerson_rGameMode();
 
+	UFUNCTION(BlueprintCallable)
+	virtual void BeginPlay() override;
+
 	void DoubleSomeCubes();
 
 	void TimeLimit() const;

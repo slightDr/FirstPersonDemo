@@ -13,9 +13,12 @@ AClass2_FirstPerson_rGameMode::AClass2_FirstPerson_rGameMode()
 	// set default pawn class to our Blueprinted character
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnClassFinder(TEXT("/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter"));
 	DefaultPawnClass = PlayerPawnClassFinder.Class;
+	
+}
 
-	fLimitTime = 60.0f;
-	iDoubleNum = 10;
+void AClass2_FirstPerson_rGameMode::BeginPlay()
+{
+	Super::BeginPlay();
 
 	if (GetWorld())
 	{
