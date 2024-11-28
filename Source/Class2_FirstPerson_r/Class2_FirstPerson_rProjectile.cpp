@@ -47,5 +47,15 @@ void AClass2_FirstPerson_rProjectile::OnHit(UPrimitiveComponent* HitComp, AActor
 			return;
 
 		OwnPlayer->AddPoints(MyCube->iShotPoints);
+
+		// 判断是否首次射击，如果是则缩放为Y倍，否则销毁
+		if (!MyCube->bHasBeenShot)
+		{
+			MyCube->bHasBeenShot = true;
+			MyCube->ChangeScale();
+		} else
+		{
+			MyCube->Destroy();
+		}
 	}
 }

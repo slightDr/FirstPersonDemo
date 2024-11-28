@@ -19,10 +19,22 @@ public:
 	// 射中积分
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 iShotPoints;
+
+	// 是否首次命中
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bHasBeenShot;
+
+	// 缩放倍数
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float fScaleFac;
 	
 	// Sets default values for this actor's properties
 	AAMyCube();
+
+	// 绑定mesh
 	void InitCubeMesh();
+
+	void ChangeScale();
 
 protected:
 	// Called when the game starts or when spawned

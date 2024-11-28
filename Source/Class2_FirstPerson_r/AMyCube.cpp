@@ -11,6 +11,8 @@ AAMyCube::AAMyCube()
 	PrimaryActorTick.bCanEverTick = true;
 
 	iShotPoints = 100;
+	bHasBeenShot = false;
+	fScaleFac = 0.5f;
 	InitCubeMesh();
 }
 
@@ -27,6 +29,18 @@ void AAMyCube::InitCubeMesh()
 		CubeMesh->SetStaticMesh(CubeMeshAsset.Object);  // 设置 StaticMesh
 	}
 	CubeMesh->SetSimulatePhysics(true);
+}
+
+void AAMyCube::ChangeScale()
+{
+	// 获取当前的Scale
+	FVector CurrentScale = GetActorScale3D();
+    
+	// 按倍数缩放
+	FVector NewScale = CurrentScale * fScaleFac;
+    
+	// 设置新的Scale
+	SetActorScale3D(NewScale);
 }
 
 // Called when the game starts or when spawned
