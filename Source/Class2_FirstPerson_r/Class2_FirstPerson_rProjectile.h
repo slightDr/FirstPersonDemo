@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Class2_FirstPerson_rPlayerController.h"
 #include "GameFramework/Actor.h"
 #include "Class2_FirstPerson_rProjectile.generated.h"
 
@@ -23,6 +24,9 @@ class AClass2_FirstPerson_rProjectile : public AActor
 	UProjectileMovementComponent* ProjectileMovement;
 
 public:
+	UPROPERTY(EditAnywhere)
+	AClass2_FirstPerson_rPlayerController* OwnPlayer;
+	
 	AClass2_FirstPerson_rProjectile();
 
 	/** called when projectile hits something */

@@ -5,9 +5,17 @@
 #include "EnhancedInputSubsystems.h"
 #include "Engine/LocalPlayer.h"
 
+void AClass2_FirstPerson_rPlayerController::AddPoints(int32 add)
+{
+	iPoints += add;
+	UE_LOG(LogTemp, Warning, TEXT("points: %d"), iPoints);
+}
+
 void AClass2_FirstPerson_rPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+
+	iPoints = 0;
 
 	// get the enhanced input subsystem
 	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))

@@ -23,6 +23,14 @@ protected:
 	UInputMappingContext* InputMappingContext;
 
 	// Begin Actor interface
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Points")
+	int32 iPoints;
+
+	UFUNCTION(BlueprintCallable)
+	void AddPoints(int32 add);
+	
 protected:
 
 	virtual void BeginPlay() override;

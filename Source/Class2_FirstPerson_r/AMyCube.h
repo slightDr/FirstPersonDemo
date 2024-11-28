@@ -11,9 +11,18 @@ class CLASS2_FIRSTPERSON_R_API AAMyCube : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
+public:
+	// 方块的网格体组件
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* CubeMesh;
+
+	// 射中积分
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 iShotPoints;
+	
 	// Sets default values for this actor's properties
 	AAMyCube();
+	void InitCubeMesh();
 
 protected:
 	// Called when the game starts or when spawned

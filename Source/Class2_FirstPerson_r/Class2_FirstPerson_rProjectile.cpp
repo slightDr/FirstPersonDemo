@@ -1,6 +1,8 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "Class2_FirstPerson_rProjectile.h"
+
+#include "AMyCube.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SphereComponent.h"
 
@@ -39,5 +41,11 @@ void AClass2_FirstPerson_rProjectile::OnHit(UPrimitiveComponent* HitComp, AActor
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
 		Destroy();
+
+		AAMyCube* MyCube = Cast<AAMyCube>(OtherActor);
+		if (!MyCube)
+			return;
+
+		OwnPlayer->AddPoints(MyCube->iShotPoints);
 	}
 }
