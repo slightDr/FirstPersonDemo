@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Net/UnrealNetwork.h"
 #include "AMyCube.generated.h"
 
 UCLASS()
@@ -13,15 +14,15 @@ class CLASS2_FIRSTPERSON_R_API AAMyCube : public AActor
 	
 public:
 	// 方块的网格体组件
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, Replicated)
 	UStaticMeshComponent* CubeMesh;
 
 	// 射中积分
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated)
 	int32 iShotPoints;
 
 	// 是否首次命中
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated)
 	bool bHasBeenShot;
 
 	// 缩放倍数
@@ -30,6 +31,8 @@ public:
 	
 	// Sets default values for this actor's properties
 	AAMyCube();
+
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 	// 绑定mesh
 	void InitCubeMesh();

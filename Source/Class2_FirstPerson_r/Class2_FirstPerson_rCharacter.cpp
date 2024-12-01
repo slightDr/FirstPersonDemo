@@ -35,13 +35,16 @@ AClass2_FirstPerson_rCharacter::AClass2_FirstPerson_rCharacter()
 	Mesh1P->CastShadow = false;
 	//Mesh1P->SetRelativeRotation(FRotator(0.9f, -19.19f, 5.2f));
 	Mesh1P->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
-
+	Mesh1P->SetIsReplicated(true);
 }
 
 void AClass2_FirstPerson_rCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+
+	if (GEngine && IsLocallyControlled())
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, "hello");
 }
 
 //////////////////////////////////////////////////////////////////////////// Input

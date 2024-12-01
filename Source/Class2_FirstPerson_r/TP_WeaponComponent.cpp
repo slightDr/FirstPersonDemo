@@ -44,10 +44,10 @@ void UTP_WeaponComponent::Fire()
 			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 	
 			// Spawn the projectile at the muzzle
-			AClass2_FirstPerson_rProjectile* Projectile = 
+			// AClass2_FirstPerson_rProjectile* Projectile = 
 			World->SpawnActor<AClass2_FirstPerson_rProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
 
-			Projectile->OwnPlayer = Cast<AClass2_FirstPerson_rPlayerController>(PlayerController);
+			// Projectile->OwnPlayer = Cast<AClass2_FirstPerson_rPlayerController>(PlayerController);
 		}
 	}
 	

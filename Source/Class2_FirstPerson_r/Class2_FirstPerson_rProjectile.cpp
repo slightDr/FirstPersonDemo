@@ -31,6 +31,21 @@ AClass2_FirstPerson_rProjectile::AClass2_FirstPerson_rProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+
+	bReplicates = true;
+	CollisionComp->SetIsReplicated(true);
+
+	// 获取当前controller
+	if (GetWorld())
+		OwnPlayer = Cast<AClass2_FirstPerson_rPlayerController>(GetWorld()->GetFirstPlayerController());
+}
+
+void AClass2_FirstPerson_rProjectile::GetLifetimeReplicatedProps(
+	TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AClass2_FirstPerson_rProjectile, OwnPlayer);
 }
 
 void AClass2_FirstPerson_rProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
@@ -46,7 +61,8 @@ void AClass2_FirstPerson_rProjectile::OnHit(UPrimitiveComponent* HitComp, AActor
 		if (!MyCube)
 			return;
 
-		OwnPlayer->AddPoints(MyCube->iShotPoints);
+		if (OwnPlayer)
+			OwnPlayer->AddPoints(MyCube->iShotPoints);
 
 		// 判断是否首次射击，如果是则缩放为Y倍，否则销毁
 		if (!MyCube->bHasBeenShot)

@@ -14,6 +14,18 @@ AAMyCube::AAMyCube()
 	bHasBeenShot = false;
 	fScaleFac = 0.5f;
 	InitCubeMesh();
+
+	bReplicates = true;
+	CubeMesh->SetIsReplicated(true);
+}
+
+void AAMyCube::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	// DOREPLIFETIME(AAMyCube, CubeMesh);
+	// DOREPLIFETIME(AAMyCube, iShotPoints);
+	// DOREPLIFETIME(AAMyCube, bHasBeenShot);
 }
 
 void AAMyCube::InitCubeMesh()
